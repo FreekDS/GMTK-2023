@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddcew70l67k61"]
+[gd_scene load_steps=5 format=3 uid="uid://ddcew70l67k61"]
 
 [ext_resource type="Texture2D" uid="uid://c04fk4nc5s7c6" path="res://Entities/Human/assets/man.png" id="1_it8ec"]
 [ext_resource type="Script" path="res://UI/scripts/game_ui.gd" id="1_qel87"]
+[ext_resource type="FontFile" uid="uid://biivokc0go6fn" path="res://UI/assets/thin_pixel-7.ttf" id="3_80n1d"]
 [ext_resource type="PackedScene" uid="uid://dtlfthkgbk2ox" path="res://UI/victory.tscn" id="3_qixf8"]
 
 [node name="GameUI" type="CanvasLayer" node_paths=PackedStringArray("label")]
@@ -51,7 +52,10 @@ texture = ExtResource("1_it8ec")
 expand_mode = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="GameUI/MarginContainer/Panel/CenterContainer/HBoxContainer"]
+texture_filter = 1
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_80n1d")
+theme_override_font_sizes/normal_font_size = 32
 text = "0 / 10"
 fit_content = true
 autowrap_mode = 0

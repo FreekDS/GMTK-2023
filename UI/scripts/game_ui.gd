@@ -1,9 +1,11 @@
+class_name GameUI
 extends CanvasLayer
 
 
 @export var humanCount = 5
 @export var label : RichTextLabel
 
+@export
 var currentCount = 0 : 
 	set(c):
 		currentCount = clamp(c, 0, humanCount)

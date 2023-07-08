@@ -1,0 +1,129 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7ujmgnrjk47l"]
+
+[ext_resource type="Script" path="res://UI/MainMenu.gd" id="1_1cyjq"]
+[ext_resource type="FontFile" uid="uid://biivokc0go6fn" path="res://UI/assets/thin_pixel-7.ttf" id="1_hhkne"]
+[ext_resource type="PackedScene" uid="uid://bq3mokitwlfdq" path="res://Background/clouds.tscn" id="2_u1ka5"]
+[ext_resource type="TileSet" uid="uid://dg14hgfkpi1uq" path="res://Tilemap/assets/TileSet.tres" id="3_mnyty"]
+[ext_resource type="Texture2D" uid="uid://uumr1mgdk7xc" path="res://Entities/Sheep/assets/leftBot/shaapgrond1.png" id="5_io0m5"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1cyjq")
+
+[node name="TitleMargin" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+
+[node name="TitleLabel" type="RichTextLabel" parent="TitleMargin"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_hhkne")
+theme_override_font_sizes/normal_font_size = 128
+text = "Cool Awesome Title"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 23
+
+[node name="Play" type="Button" parent="CenterContainer/ButtonsContainer"]
+custom_minimum_size = Vector2(150, 45)
+layout_mode = 2
+text = "Play"
+
+[node name="Credits" type="Button" parent="CenterContainer/ButtonsContainer"]
+custom_minimum_size = Vector2(150, 45)
+layout_mode = 2
+text = "Credits"
+
+[node name="HowToPlayMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="HowToPlayLabel" type="RichTextLabel" parent="HowToPlayMargin"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_hhkne")
+theme_override_font_sizes/normal_font_size = 40
+text = "How to play:
+- WASD: Movement
+- SPACE: Bleat
+- E: Use powerup"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Clouds" parent="." instance=ExtResource("2_u1ka5")]
+layer = -1
+
+[node name="TileMap" type="TileMap" parent="."]
+y_sort_enabled = true
+tile_set = ExtResource("3_mnyty")
+format = 2
+layer_0/name = "Poles"
+layer_0/y_sort_enabled = true
+layer_0/tile_data = PackedInt32Array(1703938, 5, 0, 1638401, 5, 0, 1703937, 5, 0, 1769472, 5, 0, 1835008, 5, 0, 1966079, 5, 0, 2031615, 5, 0, 2097150, 5, 0, 2162687, 5, 0, 2228222, 5, 0, 2293758, 5, 0, 2359293, 5, 0, 2424830, 5, 0, 1638402, 5, 0, 1572867, 5, 0, 1638403, 5, 0, 1572868, 5, 0, 1507332, 5, 0, 1441797, 5, 0, 1507333, 5, 0, 1572870, 5, 0, 1703942, 5, 0, 1835014, 5, 0, 1966086, 5, 0, 2031622, 5, 0, 2097159, 5, 0, 2162695, 5, 0, 2293767, 5, 0, 2490376, 5, 0, 2555911, 5, 0, 2359304, 5, 0, 2621447, 5, 0, 2686982, 5, 0)
+layer_1/name = "Connector2"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = true
+layer_1/y_sort_origin = 0
+layer_1/z_index = 0
+layer_1/tile_data = PackedInt32Array(1441797, 3, 0, 1507332, 3, 0, 1572868, 3, 0, 1572867, 3, 0, 1638402, 3, 0, 1638401, 3, 0, 1703937, 3, 0, 1769472, 3, 0, 1835008, 3, 0, 1966079, 3, 0, 2031615, 3, 0, 2162687, 3, 0, 2228222, 3, 0, 2293758, 3, 0, 2621447, 3, 0, 2555911, 3, 0, 2490376, 3, 0)
+layer_2/name = "Connector1"
+layer_2/enabled = true
+layer_2/modulate = Color(1, 1, 1, 1)
+layer_2/y_sort_enabled = true
+layer_2/y_sort_origin = 0
+layer_2/z_index = 0
+layer_2/tile_data = PackedInt32Array(1966086, 4, 0, 2031622, 4, 0, 2097159, 4, 0, 2293767, 4, 0, 1507333, 4, 0, 1441797, 4, 0, 1572867, 4, 0, 1638401, 4, 0, 2097150, 4, 0, 2359293, 4, 0)
+layer_3/name = "Grass"
+layer_3/enabled = true
+layer_3/modulate = Color(1, 1, 1, 1)
+layer_3/y_sort_enabled = true
+layer_3/y_sort_origin = 0
+layer_3/z_index = -1
+layer_3/tile_data = PackedInt32Array(2424832, 6, 0, 2490369, 6, 0, 2424833, 6, 0, 2490370, 6, 0, 2424834, 6, 1, 2490371, 6, 0, 2424835, 6, 0, 2490372, 6, 0, 2424836, 6, 0, 2490373, 6, 0, 2424837, 6, 0, 2490374, 6, 0, 2424838, 6, 0, 2490375, 6, 0, 2424839, 6, 0, 2424840, 6, 0, 2359305, 6, 0, 2424841, 6, 2, 2359306, 6, 0, 2424842, 6, 0, 2359307, 6, 1, 2424843, 6, 1, 2359308, 6, 1, 2424844, 6, 1, 2359309, 6, 0, 2424845, 6, 1, 2359310, 6, 0, 2424846, 6, 1, 2490383, 6, 1, 2424847, 6, 1, 2490384, 6, 1, 2424848, 6, 1, 2490385, 6, 1, 2555921, 6, 0, 2555904, 6, 0, 2555905, 6, 0, 2555906, 6, 0, 2555907, 6, 0, 2555908, 6, 0, 2555909, 6, 0, 2621446, 6, 0, 2555910, 6, 0, 2621447, 6, 0, 2555911, 6, 0, 2621448, 6, 0, 2555912, 6, 0, 2621449, 6, 0, 2555913, 6, 0, 2621450, 6, 0, 2555914, 6, 0, 2621451, 6, 0, 2555915, 6, 1, 2490378, 6, 3, 2490377, 6, 0, 2490376, 6, 0, 2621445, 6, 0, 2621443, 6, 1, 2621442, 6, 0, 2621441, 6, 1, 2686976, 6, 1, 2686977, 6, 1, 2752513, 6, 1, 2293760, 6, 0, 2359297, 6, 0, 2293761, 6, 0, 2228226, 6, 0, 2293762, 6, 0, 2359299, 6, 0, 2359298, 6, 1, 2359296, 6, 1, 2752512, 6, 1, 2818048, 6, 1, 2490381, 6, 1, 2490382, 6, 1, 2555920, 6, 1, 2621456, 6, 0, 2555919, 6, 0, 2555918, 6, 0, 2621454, 6, 0, 2555917, 6, 0, 2621453, 6, 1, 2555916, 6, 1, 2621452, 6, 1, 2490379, 6, 1, 2490380, 6, 1, 2621457, 6, 1, 2686991, 6, 1, 2621455, 6, 0, 2686990, 6, 1, 2686989, 6, 1, 2686988, 6, 1, 2752524, 6, 1, 2686987, 6, 1, 2686986, 6, 1, 2752522, 6, 1, 2686985, 6, 1, 2752521, 6, 1, 2686984, 6, 1, 2752520, 6, 1, 2686983, 6, 1, 2752519, 6, 1, 2686982, 6, 1, 2686981, 6, 1, 2686980, 6, 1, 2621444, 6, 1, 2686979, 6, 0, 2686978, 6, 0, 2490367, 6, 1, 2490368, 6, 1, 2752511, 6, 1, 2621440, 6, 1, 2621439, 6, 1, 2686975, 6, 1, 2555903, 6, 1, 2621438, 6, 1, 2293775, 6, 1, 2359312, 6, 0, 2293776, 6, 0, 2359311, 6, 1, 2293774, 6, 1, 2228240, 6, 0, 2359313, 6, 1, 2424849, 6, 1, 2490386, 6, 1, 2228239, 6, 1, 2228238, 6, 1, 2293773, 6, 3, 2228237, 6, 1, 2228236, 6, 1, 2228235, 6, 0, 2162698, 6, 0, 2228234, 6, 0, 2162697, 6, 0, 2228233, 6, 0, 2293770, 6, 0, 2293771, 6, 0, 2293772, 6, 0, 2293769, 6, 1, 2293768, 6, 1, 2228232, 6, 1, 2293767, 6, 1, 2228231, 6, 1, 2293766, 6, 1, 2228230, 6, 1, 2359304, 6, 1, 2359303, 6, 1, 2359302, 6, 1, 2293765, 6, 1, 2359301, 6, 1, 2293764, 6, 0, 2359300, 6, 0, 2293763, 6, 0, 2228229, 6, 0, 2162692, 6, 1, 2228228, 6, 0, 2162691, 6, 0, 2228227, 6, 0, 2162690, 6, 1, 2228225, 6, 0, 2162689, 6, 0, 2162688, 6, 1, 2228224, 6, 1, 2359295, 6, 1, 2424831, 6, 1, 2293759, 6, 1, 2359294, 6, 1, 2424830, 6, 1, 2490366, 6, 1, 2555902, 6, 1, 2228241, 6, 1, 2293777, 6, 0, 2359314, 6, 1, 2424850, 6, 1, 2490387, 6, 1, 2228242, 6, 1, 2293778, 6, 1, 2359315, 6, 0, 2424851, 6, 1, 2490388, 6, 1, 2555924, 6, 1, 2097152, 6, 0, 2031616, 6, 0, 1900546, 6, 0, 1835011, 6, 0, 1769475, 6, 0, 1703941, 6, 2, 1638405, 6, 0, 1572870, 6, 0, 1638406, 6, 0, 1638410, 6, 0, 1572875, 6, 0, 1638411, 6, 0, 1572876, 6, 0, 1638412, 6, 0, 1900560, 6, 0, 1966097, 6, 0, 2031633, 6, 0, 2097170, 6, 0, 2162706, 6, 0, 1835018, 6, 0, 1769482, 6, 0, 1703947, 6, 0, 1769483, 6, 0, 1703948, 6, 0, 1769484, 6, 0, 1835020, 6, 0, 1900555, 6, 3, 1835019, 6, 0, 1900554, 6, 0, 1966090, 6, 0, 1900553, 6, 0, 1835017, 6, 0, 1769481, 6, 3, 1703946, 6, 0, 1769480, 6, 0, 1703944, 6, 1, 1769479, 6, 3, 1703943, 6, 0, 1769478, 6, 0, 1703942, 6, 0, 1769477, 6, 0, 1835013, 6, 0, 1769476, 6, 0, 1835012, 6, 2, 1900547, 6, 0, 1966083, 6, 0, 2031618, 6, 0, 1966082, 6, 0, 2031617, 6, 2, 2097153, 6, 0, 2097154, 6, 3, 2097155, 6, 0, 2031619, 6, 0, 1966084, 6, 0, 1900548, 6, 0, 1966085, 6, 0, 1900549, 6, 0, 1835014, 6, 3, 1900550, 6, 0, 1835015, 6, 0, 1900551, 6, 0, 1835016, 6, 0, 1900552, 6, 0, 1966088, 6, 0, 2031623, 6, 0, 1966087, 6, 0, 2031622, 6, 0, 1966086, 6, 2, 2031621, 6, 1, 2097157, 6, 0, 2031620, 6, 0, 2097156, 6, 3, 2162693, 6, 0, 2097158, 6, 0, 2162694, 6, 0, 2097159, 6, 0, 2162695, 6, 0, 2097160, 6, 0, 2031624, 6, 0, 1966089, 6, 0, 2031625, 6, 0, 2097161, 6, 0, 2162696, 6, 0, 2097162, 6, 0, 2031626, 6, 0, 1966091, 6, 0, 2031627, 6, 0, 1966092, 6, 0, 1900556, 6, 0, 1835021, 6, 0, 1769485, 6, 0, 1835022, 6, 0, 1835023, 6, 0, 1900558, 6, 0, 1966094, 6, 0, 1900557, 6, 0, 1966093, 6, 0, 2031628, 6, 0, 2097164, 6, 0, 2162699, 6, 0, 2097163, 6, 1, 2162700, 6, 0, 2097165, 6, 0, 2031629, 6, 0, 2097166, 6, 0, 2031630, 6, 0, 1966095, 6, 0, 1900559, 6, 0, 1835024, 6, 0, 1966096, 6, 0, 2031631, 6, 0, 2097167, 6, 0, 2162702, 6, 0, 2162703, 6, 0, 2097168, 6, 0, 2031632, 6, 0, 2097169, 6, 0, 2162704, 6, 0, 2162705, 6, 0, 2162701, 6, 1, 1966080, 6, 0, 2097151, 6, 0, 2162687, 6, 0, 1703949, 6, 3, 1703940, 6, 0, 1703939, 6, 0, 1769474, 6, 0, 1835010, 6, 0, 1900545, 6, 0, 1966081, 6, 0, 2228223, 6, 0, 1900544, 6, 0, 1835009, 6, 0, 1769473, 6, 0, 1572869, 6, 0, 1638404, 6, 0)
+
+[node name="Sheep" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(355, 413)
+texture = ExtResource("5_io0m5")
+
+[node name="Sheep2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(445, 590)
+texture = ExtResource("5_io0m5")
+
+[node name="Sheep3" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(149, 511)
+texture = ExtResource("5_io0m5")
+
+[connection signal="pressed" from="CenterContainer/ButtonsContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CenterContainer/ButtonsContainer/Credits" to="." method="_on_credits_pressed"]

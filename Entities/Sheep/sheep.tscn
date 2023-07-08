@@ -1,8 +1,118 @@
-[gd_scene load_steps=9 format=3 uid="uid://u8o87wc4omic"]
+[gd_scene load_steps=25 format=3 uid="uid://u8o87wc4omic"]
 
 [ext_resource type="Script" path="res://Entities/Sheep/scripts/Sheep.gd" id="1_besig"]
-[ext_resource type="Texture2D" uid="uid://cur0v1ghtapgi" path="res://Entities/Sheep/assets/sheep.png" id="2_8iofm"]
+[ext_resource type="Texture2D" uid="uid://uumr1mgdk7xc" path="res://Entities/Sheep/assets/leftBot/shaapgrond1.png" id="2_l4ihs"]
 [ext_resource type="AudioStream" uid="uid://ohsbxl0m1kep" path="res://Entities/Sheep/assets/blaat.wav" id="3_gqi85"]
+[ext_resource type="Texture2D" uid="uid://6716lm6i35qv" path="res://Entities/Sheep/assets/leftBot/shaapomhoog1.png" id="3_nhfil"]
+[ext_resource type="Texture2D" uid="uid://b7nmq21jpwvpe" path="res://Entities/Sheep/assets/leftBot/shaapomhoger1.png" id="4_hrm0p"]
+[ext_resource type="Texture2D" uid="uid://d3180wbqpxnp3" path="res://Entities/Sheep/assets/leftBot/shaapomhoogst1.png" id="5_gyvn6"]
+[ext_resource type="Texture2D" uid="uid://yu06gjqcegpd" path="res://Entities/Sheep/assets/leftTop/schaapgrond4.png" id="6_0r5b2"]
+[ext_resource type="Texture2D" uid="uid://tkcdjuauol60" path="res://Entities/Sheep/assets/rightBot/shaapgrond2.png" id="6_unq8m"]
+[ext_resource type="Texture2D" uid="uid://bli3wolvddtif" path="res://Entities/Sheep/assets/leftTop/schaapomhoog4.png" id="7_ciaq7"]
+[ext_resource type="Texture2D" uid="uid://rasae7ftob8j" path="res://Entities/Sheep/assets/rightBot/shaapomhoog2.png" id="7_sshmv"]
+[ext_resource type="Texture2D" uid="uid://ctw2xmspc64hh" path="res://Entities/Sheep/assets/rightBot/shaapomhoger2.png" id="8_hmlnb"]
+[ext_resource type="Texture2D" uid="uid://bep75forwx51s" path="res://Entities/Sheep/assets/leftTop/schaapomhoger4.png" id="8_yqre0"]
+[ext_resource type="Texture2D" uid="uid://b0lofj1i6o0ph" path="res://Entities/Sheep/assets/leftTop/schaapomhoogst4.png" id="9_2bbqt"]
+[ext_resource type="Texture2D" uid="uid://e6aslrjss6cl" path="res://Entities/Sheep/assets/rightBot/shaapomhoogst2.png" id="9_rkskl"]
+[ext_resource type="Texture2D" uid="uid://k358mmc8up6b" path="res://Entities/Sheep/assets/rightTop/schaapgrond3.png" id="10_o5r7p"]
+[ext_resource type="Texture2D" uid="uid://bjwy8aq5thlmm" path="res://Entities/Sheep/assets/rightTop/schaapomhoog3.png" id="11_i1uur"]
+[ext_resource type="Texture2D" uid="uid://ba43pinohh3dd" path="res://Entities/Sheep/assets/rightTop/schaapomhoger3.png" id="12_ha1tl"]
+[ext_resource type="Texture2D" uid="uid://ddc01o6y5gbpb" path="res://Entities/Sheep/assets/rightTop/schaapomhoogst3.png" id="13_3enko"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ibc77"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_l4ihs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_nhfil")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hrm0p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_gyvn6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hrm0p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_nhfil")
+}],
+"loop": true,
+"name": &"left_bot",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_0r5b2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ciaq7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_yqre0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2bbqt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_yqre0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ciaq7")
+}],
+"loop": true,
+"name": &"left_top",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_unq8m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_sshmv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_hmlnb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_rkskl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_hmlnb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_sshmv")
+}],
+"loop": true,
+"name": &"right_bot",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_o5r7p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_i1uur")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ha1tl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_3enko")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ha1tl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_i1uur")
+}],
+"loop": true,
+"name": &"right_top",
+"speed": 20.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jgh51"]
 radius = 1.0
@@ -54,12 +164,13 @@ y_sort_enabled = true
 collision_mask = 2
 script = ExtResource("1_besig")
 
-[node name="Sheep" type="Sprite2D" parent="."]
+[node name="Sheep" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 texture_repeat = 1
 position = Vector2(0, -21)
-scale = Vector2(3, 3)
-texture = ExtResource("2_8iofm")
+sprite_frames = SubResource("SpriteFrames_ibc77")
+animation = &"left_top"
+offset = Vector2(0, -21)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
@@ -74,7 +185,14 @@ libraries = {
 stream = ExtResource("3_gqi85")
 
 [node name="BlaatArea" type="Area2D" parent="."]
+position = Vector2(0, -21)
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BlaatArea"]
 shape = SubResource("CircleShape2D_vubku")
+
+[node name="AttackCooldown" type="Timer" parent="."]
+wait_time = 0.7
+one_shot = true
+
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]

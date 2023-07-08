@@ -15,6 +15,10 @@ run/main_scene="res://game.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+FadeTransition="*res://UI/Transition.tscn"
+
 [display]
 
 window/stretch/mode="canvas_items"

@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 enum State {CAPTURED, FREE, FLEEING}
 
-const SPEED = 0
+const SPEED = 100
 const SPEED_CAPTURED = 50
 
 @onready var newTargetTimer = $NewTargetTimer
@@ -37,7 +37,7 @@ func _draw():
 		draw_arc(Vector2.ZERO, nextLocationRadius, 0, 360, 100, Color.RED)
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 	if target.distance_to(global_position) < 1:
 		pickNewTarget()
@@ -75,7 +75,7 @@ func changeState(newState: State):
 func flee(from: Vector2):
 	if state == State.CAPTURED:
 		return
-	print("weglopen")
+
 	target = (global_position - from).normalized() * 100000
 	if state != State.FLEEING:
 		stateBeforeFleeing = state
@@ -85,8 +85,6 @@ func flee(from: Vector2):
 
 func _on_new_target_timer_timeout():
 	if state == State.FLEEING:
-		print("Tis goed jom, kalmeert maar")
 		changeState(stateBeforeFleeing)
 	pickNewTarget()
-	print("New target", target)
 	newTargetTimer.start(walkForAtLeast)

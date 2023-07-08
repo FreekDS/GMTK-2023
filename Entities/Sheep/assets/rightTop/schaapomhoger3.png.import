@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvp41jmnvwc4n"
-path="res://.godot/imported/win.png-0a87206ce9154946c576b9e850db6298.ctex"
+uid="uid://ba43pinohh3dd"
+path="res://.godot/imported/schaapomhoger3.png-8209a3555f09307cac3beabb78a3c92d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/win.png"
-dest_files=["res://.godot/imported/win.png-0a87206ce9154946c576b9e850db6298.ctex"]
+source_file="res://Entities/Sheep/assets/rightTop/schaapomhoger3.png"
+dest_files=["res://.godot/imported/schaapomhoger3.png-8209a3555f09307cac3beabb78a3c92d.ctex"]
 
 [params]
 

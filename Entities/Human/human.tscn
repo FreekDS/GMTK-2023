@@ -51,7 +51,7 @@ collision_mask = 2
 script = ExtResource("1_08xik")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 23)
+position = Vector2(-1, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_knx27")
 
@@ -59,6 +59,7 @@ shape = SubResource("CapsuleShape2D_knx27")
 texture_filter = 1
 scale = Vector2(3, 3)
 texture = ExtResource("2_0opvo")
+offset = Vector2(0, -8)
 
 [node name="NewTargetTimer" type="Timer" parent="."]
 autostart = true

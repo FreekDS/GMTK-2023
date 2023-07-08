@@ -7,11 +7,13 @@ extends CharacterBody2D
 @export_range(10,500,10) var blaatRange = 80
 
 @onready var animations : AnimationPlayer = $Animations
-@onready var sprite : Sprite2D = $Sheep
+@onready var sprites : AnimatedSprite2D = $Sheep
 @onready var sound : AudioStreamPlayer = $AudioStreamPlayer
 @onready var blaatAreaShape : CollisionShape2D = $BlaatArea/CollisionShape2D
 @onready var blaatArea : Area2D = $BlaatArea
+@onready var cooldownTimer : Timer = $AttackCooldown
 
+var canAttack = true
 
 signal attacked
 
@@ -23,43 +25,56 @@ func getInput() -> Vector2:
 	return input.normalized()
 
 
+func updateAnim(input: Vector2):
+	if input.x < 0:
+		if input.y < 0:
+			sprites.play("left_top")
+		else:
+			sprites.play("left_bot")
+	else:
+		if input.y < 0:
+			sprites.play("right_top")
+		else:
+			sprites.play("right_bot")
+	
+
+
 func _physics_process(_delta):
 	var input = getInput()
 	velocity = input * speed
 	
 	if velocity.is_zero_approx():
-		animations.stop()
-		sprite.rotation_degrees = 0
+		sprites.stop()
+		sprites.rotation_degrees = 0
 	else:
-		animations.play("walk")
-		sprite.rotation_degrees = tiltAmount
-		var goesLeft = input.x < 0
+		updateAnim(velocity)
+		sprites.rotation_degrees = -tiltAmount
+		var goesLeft = input.x >= 0
 		
-		sprite.flip_h = goesLeft
+#		sprites.flip_h = goesLeft
 		if goesLeft:
-			sprite.rotation_degrees = -tiltAmount
+			sprites.rotation_degrees = tiltAmount
 	
 	move_and_slide()
-	
-	#queue_redraw()
 
 
 func _input(event):
 	if event.is_action_pressed("blaat"):
-		sound.pitch_scale = randf_range(1,2)
-		sound.play()
 		blaatAttack()
-		
-
-
-#func _draw():
-#	draw_arc(position, blaatRange, 0, 360, 100, Color.RED)
 
 
 func blaatAttack():
+	if not canAttack:
+		return
+	cooldownTimer.start()
+	sound.pitch_scale = randf_range(1,2)
+	sound.play()
+	canAttack = false
 	for body in blaatArea.get_overlapping_bodies():
 		if body is Human:
 			body.flee(global_position)
 	attacked.emit()
 
-	
+
+func _on_attack_cooldown_timeout():
+	canAttack = true

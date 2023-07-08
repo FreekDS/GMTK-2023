@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dtlfthkgbk2ox"]
 
-[ext_resource type="Texture2D" uid="uid://dvp41jmnvwc4n" path="res://UI/win.png" id="1_njats"]
+[ext_resource type="Texture2D" uid="uid://dvp41jmnvwc4n" path="res://UI/assets/win.png" id="1_njats"]
 
 [node name="Victory" type="TextureRect"]
 anchors_preset = 15
