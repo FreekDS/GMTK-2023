@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=3 uid="uid://u8o87wc4omic"]
+
+[ext_resource type="Script" path="res://Entities/Sheep/scripts/Sheep.gd" id="1_besig"]
+[ext_resource type="Texture2D" uid="uid://cur0v1ghtapgi" path="res://Entities/Sheep/assets/sheep.png" id="2_8iofm"]
+[ext_resource type="AudioStream" uid="uid://ohsbxl0m1kep" path="res://Entities/Sheep/assets/blaat.wav" id="3_gqi85"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jgh51"]
+radius = 1.0
+height = 20.0
+
+[sub_resource type="Animation" id="Animation_vsb87"]
+resource_name = "walk"
+length = 0.35
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sheep:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -15)]
+}
+
+[sub_resource type="Animation" id="Animation_60beo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sheep:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_70hqc"]
+_data = {
+"RESET": SubResource("Animation_60beo"),
+"walk": SubResource("Animation_vsb87")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vubku"]
+radius = 80.0
+
+[node name="Sheep" type="CharacterBody2D"]
+script = ExtResource("1_besig")
+
+[node name="Sheep" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 1
+scale = Vector2(3, 3)
+texture = ExtResource("2_8iofm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 20)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_jgh51")
+
+[node name="Animations" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_70hqc")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_gqi85")
+
+[node name="BlaatArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlaatArea"]
+shape = SubResource("CircleShape2D_vubku")
