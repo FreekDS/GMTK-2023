@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://bq3mokitwlfdq"]
+
+[ext_resource type="Shader" path="res://Background/clouds.gdshader" id="1_albmd"]
+[ext_resource type="Script" path="res://Background/clouds.gd" id="1_bk6uo"]
+[ext_resource type="Texture2D" uid="uid://dg1lwxfonfh68" path="res://Background/cute_wolkjes.png" id="2_b3rgo"]
+[ext_resource type="Shader" path="res://Background/clouds_texture.gdshader" id="3_3dxw6"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4avks"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ed5j0"]
+noise = SubResource("FastNoiseLite_4avks")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pt6t1"]
+shader = ExtResource("1_albmd")
+shader_parameter/cloudTreshold = 0.6
+shader_parameter/cloudDarkness = 0.9
+shader_parameter/pixelSize = 4
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_ed5j0")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5b3ig"]
+shader = ExtResource("3_3dxw6")
+
+[node name="Clouds" type="CanvasLayer"]
+layer = 0
+script = ExtResource("1_bk6uo")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_pt6t1")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.509804)
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_5b3ig")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+texture = ExtResource("2_b3rgo")
+stretch_mode = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

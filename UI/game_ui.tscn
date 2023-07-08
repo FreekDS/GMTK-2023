@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddcew70l67k61"]
+
+[ext_resource type="Texture2D" uid="uid://c04fk4nc5s7c6" path="res://Entities/Human/assets/man.png" id="1_it8ec"]
+[ext_resource type="Script" path="res://UI/scripts/game_ui.gd" id="1_qel87"]
+[ext_resource type="PackedScene" uid="uid://dtlfthkgbk2ox" path="res://UI/victory.tscn" id="3_qixf8"]
+
+[node name="GameUI" type="CanvasLayer" node_paths=PackedStringArray("label")]
+script = ExtResource("1_qel87")
+label = NodePath("GameUI/MarginContainer/Panel/CenterContainer/HBoxContainer/RichTextLabel")
+
+[node name="GameUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="GameUI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+
+[node name="Panel" type="Panel" parent="GameUI/MarginContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="GameUI/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.5
+offset_top = -20.0
+offset_right = 34.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameUI/MarginContainer/Panel/CenterContainer"]
+layout_mode = 2
+
+[node name="Sprite2D" type="TextureRect" parent="GameUI/MarginContainer/Panel/CenterContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("1_it8ec")
+expand_mode = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameUI/MarginContainer/Panel/CenterContainer/HBoxContainer"]
+layout_mode = 2
+text = "0 / 10"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Victory" parent="." instance=ExtResource("3_qixf8")]
+visible = false

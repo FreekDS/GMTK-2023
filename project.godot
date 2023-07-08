@@ -67,6 +67,12 @@ blaat={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Walls"
+2d_physics/layer_3="Humans"
+
 [rendering]
 
 environment/defaults/default_clear_color=Color(0.364706, 0.611765, 0.945098, 1)

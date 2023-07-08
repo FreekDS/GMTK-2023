@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 enum State {CAPTURED, FREE, FLEEING}
 
-const SPEED = 100
+const SPEED = 0
 const SPEED_CAPTURED = 50
 
 @onready var newTargetTimer = $NewTargetTimer
@@ -61,7 +61,8 @@ func _physics_process(delta):
 	move_and_slide()
 	var collision = get_last_slide_collision()
 	if collision:
-		print("collision TODO check if is with wall")
+#		print("collision TODO check if is with wall")
+# collsion masks zijn ingesteld
 		target = global_position + collision.get_normal().normalized() * nextLocationRadius
 		newTargetTimer.start(walkForAtLeast)
 

@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtlfthkgbk2ox"]
+
+[ext_resource type="Texture2D" uid="uid://dvp41jmnvwc4n" path="res://UI/win.png" id="1_njats"]
+
+[node name="Victory" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_njats")
+expand_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 465.0
+offset_right = 760.0
+offset_bottom = 669.0
+theme_override_font_sizes/normal_font_size = 150
+text = "GG WP"
