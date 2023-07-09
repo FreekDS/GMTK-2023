@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhsw5edicefyd"]
+
+[ext_resource type="AudioStream" uid="uid://dikydpbbf7qoe" path="res://AUDIO/Mayor_Tom_for_Crowd_Control.mp3" id="1_ynhdi"]
+
+[node name="Music" type="Node"]
+process_mode = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_ynhdi")
+volume_db = -15.0
+autoplay = true

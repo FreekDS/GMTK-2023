@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://c07h625c30pnk"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_wtq6c"]
+[ext_resource type="PackedScene" uid="uid://xivfjic6ii6x" path="res://Levels/LevelBase.tscn" id="4_buk3u"]
+[ext_resource type="PackedScene" uid="uid://ddcew70l67k61" path="res://UI/game_ui.tscn" id="6_j647x"]
+[ext_resource type="PackedScene" uid="uid://bq3mokitwlfdq" path="res://Background/clouds.tscn" id="7_lq4p7"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_wtq6c")
+levels = Array[PackedScene]([ExtResource("4_buk3u"), ExtResource("4_buk3u")])
+
+[node name="Clouds" parent="." instance=ExtResource("7_lq4p7")]
+layer = -1
+
+[node name="GameUI" parent="." instance=ExtResource("6_j647x")]
+
+[connection signal="timeUp" from="GameUI" to="." method="_on_game_ui_time_up"]
+[connection signal="won" from="GameUI" to="." method="_on_game_ui_won"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://u8o87wc4omic"]
+[gd_scene load_steps=34 format=3 uid="uid://u8o87wc4omic"]
 
 [ext_resource type="Script" path="res://Entities/Sheep/scripts/Sheep.gd" id="1_besig"]
 [ext_resource type="Texture2D" uid="uid://uumr1mgdk7xc" path="res://Entities/Sheep/assets/leftBot/shaapgrond1.png" id="2_l4ihs"]
@@ -18,6 +18,9 @@
 [ext_resource type="Texture2D" uid="uid://bjwy8aq5thlmm" path="res://Entities/Sheep/assets/rightTop/schaapomhoog3.png" id="11_i1uur"]
 [ext_resource type="Texture2D" uid="uid://ba43pinohh3dd" path="res://Entities/Sheep/assets/rightTop/schaapomhoger3.png" id="12_ha1tl"]
 [ext_resource type="Texture2D" uid="uid://ddc01o6y5gbpb" path="res://Entities/Sheep/assets/rightTop/schaapomhoogst3.png" id="13_3enko"]
+[ext_resource type="Texture2D" uid="uid://cap72i2vr63m1" path="res://Entities/Sheep/assets/baaa.png" id="19_rns4s"]
+[ext_resource type="Texture2D" uid="uid://dkxw7ij0wdxu1" path="res://Entities/Sheep/assets/cowboyhat.png" id="20_uq43k"]
+[ext_resource type="AudioStream" uid="uid://6h2l3yanil5e" path="res://AUDIO/Mounting.ogg" id="21_olv0t"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ibc77"]
 animations = [{
@@ -118,46 +121,69 @@ animations = [{
 radius = 1.0
 height = 20.0
 
-[sub_resource type="Animation" id="Animation_vsb87"]
-resource_name = "walk"
-length = 0.35
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sheep:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, -21), Vector2(0, -36)]
-}
-
-[sub_resource type="Animation" id="Animation_60beo"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sheep:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -21)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_70hqc"]
-_data = {
-"RESET": SubResource("Animation_60beo"),
-"walk": SubResource("Animation_vsb87")
-}
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_vubku"]
-radius = 80.0
+radius = 106.042
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rruwp"]
+atlas = ExtResource("19_rns4s")
+region = Rect2(0, 0, 64, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pf3sv"]
+atlas = ExtResource("19_rns4s")
+region = Rect2(0, 38, 64, 38)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d1den"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rruwp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pf3sv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogucu"]
+atlas = ExtResource("20_uq43k")
+region = Rect2(0, 0, 33, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxh8x"]
+atlas = ExtResource("20_uq43k")
+region = Rect2(0, 22, 33, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prvkh"]
+atlas = ExtResource("20_uq43k")
+region = Rect2(0, 44, 33, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0sude"]
+atlas = ExtResource("20_uq43k")
+region = Rect2(0, 66, 33, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gmegi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ogucu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxh8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_prvkh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0sude")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2q7h3"]
+size = Vector2(61, 62)
 
 [node name="Sheep" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -167,19 +193,14 @@ script = ExtResource("1_besig")
 [node name="Sheep" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 texture_repeat = 1
-position = Vector2(0, -21)
 sprite_frames = SubResource("SpriteFrames_ibc77")
-animation = &"left_top"
+animation = &"right_bot"
+frame_progress = 0.825396
 offset = Vector2(0, -21)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_jgh51")
-
-[node name="Animations" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_70hqc")
-}
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_gqi85")
@@ -195,4 +216,82 @@ shape = SubResource("CircleShape2D_vubku")
 wait_time = 0.7
 one_shot = true
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Blaat" type="Node2D" parent="."]
+
+[node name="topLeft" type="AnimatedSprite2D" parent="Blaat"]
+visible = false
+texture_filter = 1
+position = Vector2(-25, -54)
+rotation = -0.627256
+sprite_frames = SubResource("SpriteFrames_d1den")
+frame_progress = 0.673096
+
+[node name="topRight" type="AnimatedSprite2D" parent="Blaat"]
+visible = false
+texture_filter = 1
+position = Vector2(29, -56)
+rotation = 0.630884
+sprite_frames = SubResource("SpriteFrames_d1den")
+frame_progress = 0.41114
+
+[node name="botLeft" type="AnimatedSprite2D" parent="Blaat"]
+visible = false
+texture_filter = 1
+position = Vector2(-29, -1)
+rotation = -2.58146
+sprite_frames = SubResource("SpriteFrames_d1den")
+frame_progress = 0.41114
+
+[node name="botright" type="AnimatedSprite2D" parent="Blaat"]
+visible = false
+texture_filter = 1
+position = Vector2(33, 1)
+rotation = 2.58395
+sprite_frames = SubResource("SpriteFrames_d1den")
+frame_progress = 0.41114
+
+[node name="CowboyHoed" type="Node2D" parent="."]
+
+[node name="botLeft" type="AnimatedSprite2D" parent="CowboyHoed"]
+visible = false
+texture_filter = 1
+position = Vector2(-13, -40)
+sprite_frames = SubResource("SpriteFrames_gmegi")
+frame_progress = 0.296727
+
+[node name="topLeft" type="AnimatedSprite2D" parent="CowboyHoed"]
+visible = false
+texture_filter = 1
+position = Vector2(-10, -50)
+sprite_frames = SubResource("SpriteFrames_gmegi")
+frame_progress = 0.923586
+
+[node name="botRight" type="AnimatedSprite2D" parent="CowboyHoed"]
+visible = false
+texture_filter = 1
+position = Vector2(13, -38)
+sprite_frames = SubResource("SpriteFrames_gmegi")
+frame_progress = 0.0283037
+
+[node name="topRight" type="AnimatedSprite2D" parent="CowboyHoed"]
+visible = false
+texture_filter = 1
+position = Vector2(11, -52)
+sprite_frames = SubResource("SpriteFrames_gmegi")
+frame_progress = 0.431433
+
+[node name="PickupArea" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+position = Vector2(1.5, -25)
+shape = SubResource("RectangleShape2D_2q7h3")
+
+[node name="Powerup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_olv0t")
+volume_db = -5.0
+
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="body_entered" from="PickupArea" to="." method="_on_pickup_area_body_entered"]

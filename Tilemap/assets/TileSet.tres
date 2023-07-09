@@ -1,10 +1,31 @@
-[gd_resource type="TileSet" load_steps=11 format=3 uid="uid://dg14hgfkpi1uq"]
+[gd_resource type="TileSet" load_steps=13 format=3 uid="uid://dg14hgfkpi1uq"]
 
+[ext_resource type="Texture2D" uid="uid://y42hha3f3d24" path="res://Tilemap/assets/dodetiles.png" id="1_7d2ud"]
 [ext_resource type="Texture2D" uid="uid://btgn7ikkkj6sr" path="res://Tilemap/tile.png" id="1_gpawm"]
 [ext_resource type="Texture2D" uid="uid://cxeb6glvylv0" path="res://Tilemap/fences/fence_diagonal1.png" id="2_c3pfp"]
 [ext_resource type="Texture2D" uid="uid://dnv6maxocuyms" path="res://Tilemap/fences/fence_diagonal2.png" id="3_qdh7q"]
 [ext_resource type="Texture2D" uid="uid://ders3osuk0aj7" path="res://Tilemap/fences/fence_picket.png" id="4_twh8l"]
 [ext_resource type="Texture2D" uid="uid://cc5p2o3da46eb" path="res://Tilemap/tiles.png" id="5_6yqqt"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vdl8d"]
+texture = ExtResource("1_7d2ud")
+texture_region_size = Vector2i(64, 48)
+0:0/0 = 0
+0:0/0/z_index = -20
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:1/0 = 0
+0:1/0/z_index = -20
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:2/0 = 0
+0:2/0/z_index = -20
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+0:3/0 = 0
+0:3/0/z_index = -20
+0:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:3/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ebpx6"]
 texture = ExtResource("1_gpawm")
@@ -82,3 +103,4 @@ sources/4 = SubResource("TileSetAtlasSource_dp8nm")
 sources/5 = SubResource("TileSetAtlasSource_de5o6")
 sources/6 = SubResource("TileSetAtlasSource_osh3o")
 sources/1 = SubResource("TileSetAtlasSource_ebpx6")
+sources/0 = SubResource("TileSetAtlasSource_vdl8d")

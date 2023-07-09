@@ -9,6 +9,8 @@ script/source = "extends CanvasLayer
 
 signal done(isOpen: bool)
 
+var closed = false
+
 func open():
 	anim.play(\"fade\")
 	anim.animation_finished.connect(
@@ -16,6 +18,7 @@ func open():
 			done.emit(true),
 		CONNECT_ONE_SHOT
 	)
+	closed = false
 
 func close():
 	anim.play_backwards(\"fade\")
@@ -24,6 +27,7 @@ func close():
 			done.emit(false),
 		CONNECT_ONE_SHOT
 	)
+	closed = true
 "
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qc4cc"]

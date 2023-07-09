@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddcew70l67k61"]
+[gd_scene load_steps=7 format=3 uid="uid://ddcew70l67k61"]
 
-[ext_resource type="Texture2D" uid="uid://c04fk4nc5s7c6" path="res://Entities/Human/assets/man.png" id="1_it8ec"]
 [ext_resource type="Script" path="res://UI/scripts/game_ui.gd" id="1_qel87"]
+[ext_resource type="Texture2D" uid="uid://cmiwr6upmfmcy" path="res://Entities/Human/assets/dogHead.png" id="2_hwlbi"]
 [ext_resource type="FontFile" uid="uid://biivokc0go6fn" path="res://UI/assets/thin_pixel-7.ttf" id="3_80n1d"]
 [ext_resource type="PackedScene" uid="uid://dtlfthkgbk2ox" path="res://UI/victory.tscn" id="3_qixf8"]
+[ext_resource type="PackedScene" uid="uid://bjt4ajbwhg2rx" path="res://UI/level_failed_pop.tscn" id="4_q7n7a"]
+[ext_resource type="PackedScene" uid="uid://dp8y8u8qfob0o" path="res://UI/level_success_popup.tscn" id="5_mdoqn"]
 
 [node name="GameUI" type="CanvasLayer" node_paths=PackedStringArray("label")]
 script = ExtResource("1_qel87")
@@ -48,7 +50,7 @@ layout_mode = 2
 [node name="Sprite2D" type="TextureRect" parent="GameUI/MarginContainer/Panel/CenterContainer/HBoxContainer"]
 texture_filter = 1
 layout_mode = 2
-texture = ExtResource("1_it8ec")
+texture = ExtResource("2_hwlbi")
 expand_mode = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="GameUI/MarginContainer/Panel/CenterContainer/HBoxContainer"]
@@ -60,5 +62,64 @@ text = "0 / 10"
 fit_content = true
 autowrap_mode = 0
 
+[node name="TimerContainer" type="MarginContainer" parent="GameUI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 5
+
+[node name="Panel" type="Panel" parent="GameUI/TimerContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="GameUI/TimerContainer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.5
+offset_top = -20.0
+offset_right = 34.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameUI/TimerContainer/Panel/CenterContainer"]
+layout_mode = 2
+
+[node name="Sprite2D" type="TextureRect" parent="GameUI/TimerContainer/Panel/CenterContainer/HBoxContainer"]
+visible = false
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_hwlbi")
+expand_mode = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameUI/TimerContainer/Panel/CenterContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_80n1d")
+theme_override_font_sizes/normal_font_size = 32
+text = "00: 00"
+fit_content = true
+autowrap_mode = 0
+
+[node name="LevelFailedPop" parent="GameUI" instance=ExtResource("4_q7n7a")]
+visible = false
+layout_mode = 1
+
+[node name="Level Success popup" parent="GameUI" instance=ExtResource("5_mdoqn")]
+visible = false
+layout_mode = 1
+
 [node name="Victory" parent="." instance=ExtResource("3_qixf8")]
 visible = false
+
+[node name="GameTime" type="Timer" parent="."]
+wait_time = 120.0
+
+[connection signal="retry" from="GameUI/LevelFailedPop" to="." method="_on_level_failed_pop_retry"]
+[connection signal="next" from="GameUI/Level Success popup" to="." method="_on_level_success_popup_next"]
+[connection signal="timeout" from="GameTime" to="." method="_on_game_time_timeout"]

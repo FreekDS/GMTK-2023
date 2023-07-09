@@ -1,13 +1,16 @@
 extends Control
 
 
-const game = preload("res://game.tscn")
+const game = preload("res://start_animation.tscn")
 
 
 func _ready():
+	get_tree().paused = false
+	if FadeTransition.closed:
+		FadeTransition.open()
 	FadeTransition.done.connect(
 		func(isOpen: bool):
-			if not isOpen:
+			if !isOpen:
 				get_tree().change_scene_to_packed(game)
 	)
 

@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://uumr1mgdk7xc" path="res://Entities/Sheep/assets/leftBot/shaapgrond1.png" id="5_io0m5"]
 
 [node name="MainMenu" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,7 +27,7 @@ theme_override_constants/margin_top = 40
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("1_hhkne")
 theme_override_font_sizes/normal_font_size = 128
-text = "Cool Awesome Title"
+text = "Crowd Control"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
@@ -49,6 +50,7 @@ layout_mode = 2
 text = "Play"
 
 [node name="Credits" type="Button" parent="CenterContainer/ButtonsContainer"]
+visible = false
 custom_minimum_size = Vector2(150, 45)
 layout_mode = 2
 text = "Credits"
@@ -65,16 +67,41 @@ offset_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_constants/margin_right = 40
-theme_override_constants/margin_bottom = 40
+theme_override_constants/margin_bottom = 15
 
 [node name="HowToPlayLabel" type="RichTextLabel" parent="HowToPlayMargin"]
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("1_hhkne")
 theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
 text = "How to play:
 - WASD: Movement
-- SPACE: Bleat
-- E: Use powerup"
+- SPACE: Bleat to make enemies run
+- E: Dash powerup
+
+TIP: Try dashing to enemies!
+"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Credits" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -214.0
+offset_bottom = 200.0
+grow_horizontal = 0
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="HowToPlayLabel" type="RichTextLabel" parent="Credits"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_hhkne")
+theme_override_font_sizes/normal_font_size = 30
+text = "Made by:
+- Wofke: programming
+- Steineman: art/music"
 fit_content = true
 autowrap_mode = 0
 

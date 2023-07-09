@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://jmhwwi1vwone"]
+
+[ext_resource type="Texture2D" uid="uid://d21q087gecepo" path="res://Entities/Rodeo/assets/rodeo.png" id="1_4ejl4"]
+[ext_resource type="Script" path="res://Entities/Rodeo/rodeo_powerup.gd" id="1_s5nut"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ejylr"]
+size = Vector2(18.5, 20.75)
+
+[node name="RodeoPowerup" type="Area2D"]
+y_sort_enabled = true
+collision_layer = 2
+script = ExtResource("1_s5nut")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, -9)
+emission_shape = 1
+emission_sphere_radius = 16.0
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+angular_velocity_min = 37.9
+angular_velocity_max = 353.69
+orbit_velocity_min = 0.8
+orbit_velocity_max = 1.0
+linear_accel_max = 5.0
+radial_accel_min = 41.58
+radial_accel_max = 41.58
+color = Color(0.992157, 0.92549, 0.313726, 1)
+hue_variation_max = 1.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_4ejl4")
+offset = Vector2(0, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.75, -9.625)
+shape = SubResource("RectangleShape2D_ejylr")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

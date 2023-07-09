@@ -8,14 +8,52 @@ extends Camera2D
 @onready var right = $right
 
 
+func markerToVec(m) -> Vector2:
+	return m.global_position
+
+
+func fixTop(px, py):
+	var pos = markerToVec(top)
+	if py < pos.y:
+		print("TOP")
+		offset = offset.move_toward(pos, 4)
+		return true
+	return false
+	
+func fixBot(px, py) -> bool:
+	var pos = markerToVec(bot)
+	if py > pos.y:
+		offset = offset.move_toward(pos, 4)
+		return true
+	return false
+
+
+func fixRight(px, py):
+	var pos = markerToVec(right)
+	if px > pos.x:
+		offset = offset.move_toward(pos, 4)
+		return true
+	return false
+	
+func fixLeft(px, py):
+	var pos = markerToVec(left)
+	if px < pos.x:
+		print("ff")
+		offset = offset.move_toward(pos, 4)
+		return true
+	return false
+
 func _process(delta):
 	var close = false
-	for marker in [top, bot, left, right]:
-		if marker.global_position.distance_to(player.global_position) < 100:
-			offset = offset.move_toward(marker.global_position, 3)
-			close = true
-	if not close:
-		offset = offset.move_toward(Vector2.ZERO, 3)
+	
+	var px = player.global_position.x
+	var py = player.global_position.y
+	
+	if fixTop(px, py) or fixBot(px, py) or fixLeft(px, py) or fixRight(px, py):
+		pass
+	else:
+		offset = offset.move_toward(Vector2.ZERO, 4)
+	
 			
 			
 			

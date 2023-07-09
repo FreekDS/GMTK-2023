@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://vql8xnmwe3pw"]
+
+[ext_resource type="Texture2D" uid="uid://cgydnki1nqpuj" path="res://Background/coolendscreen.png" id="1_5m3fd"]
+[ext_resource type="FontFile" uid="uid://biivokc0go6fn" path="res://UI/assets/thin_pixel-7.ttf" id="2_edhtx"]
+
+[node name="EndGame" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2199, 1.2199)
+texture = ExtResource("1_5m3fd")
+stretch_mode = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 33.0
+offset_right = 432.0
+offset_bottom = 152.0
+theme_override_fonts/normal_font = ExtResource("2_edhtx")
+theme_override_font_sizes/normal_font_size = 80
+text = "Thanks for playing"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -193.0
+offset_top = -55.0
+offset_right = 196.0
+offset_bottom = 64.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("2_edhtx")
+theme_override_font_sizes/normal_font_size = 40
+text = "Press the any key"

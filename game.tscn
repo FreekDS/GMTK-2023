@@ -1,20 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://c07h625c30pnk"]
+[gd_scene load_steps=10 format=3 uid="uid://c07h625c30pnk"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_wtq6c"]
-[ext_resource type="PackedScene" uid="uid://xivfjic6ii6x" path="res://Levels/LevelBase.tscn" id="4_buk3u"]
-[ext_resource type="PackedScene" uid="uid://ddcew70l67k61" path="res://UI/game_ui.tscn" id="6_j647x"]
+[ext_resource type="PackedScene" uid="uid://773ynbf24i72" path="res://Levels/level_0.tscn" id="2_wde44"]
+[ext_resource type="PackedScene" uid="uid://crj8fhi6eiioy" path="res://Levels/level_1.tscn" id="3_thsr6"]
+[ext_resource type="PackedScene" uid="uid://dfeuattxxhweu" path="res://Levels/level_2.tscn" id="4_5i7gq"]
+[ext_resource type="PackedScene" uid="uid://ddcew70l67k61" path="res://UI/game_ui.tscn" id="4_qhw3a"]
+[ext_resource type="PackedScene" uid="uid://be2a3p7kkybw1" path="res://Levels/level_3.tscn" id="5_rioy6"]
+[ext_resource type="PackedScene" uid="uid://blhumf1deqnad" path="res://Levels/level_4.tscn" id="6_wmvy2"]
 [ext_resource type="PackedScene" uid="uid://bq3mokitwlfdq" path="res://Background/clouds.tscn" id="7_lq4p7"]
+[ext_resource type="PackedScene" uid="uid://vql8xnmwe3pw" path="res://UI/end_game.tscn" id="9_6pirx"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_wtq6c")
+levels = Array[PackedScene]([ExtResource("2_wde44"), ExtResource("3_thsr6"), ExtResource("4_5i7gq"), ExtResource("5_rioy6"), ExtResource("6_wmvy2")])
 
 [node name="Clouds" parent="." instance=ExtResource("7_lq4p7")]
 layer = -1
 
-[node name="GameUI" parent="." instance=ExtResource("6_j647x")]
+[node name="GameUI" parent="." instance=ExtResource("4_qhw3a")]
 
-[node name="LevelBase" parent="." instance=ExtResource("4_buk3u")]
+[node name="EndCanvas" type="CanvasLayer" parent="."]
+visible = false
 
-[connection signal="humanCaptured" from="LevelBase" to="GameUI" method="_on_human_captured"]
-[connection signal="humanEscaped" from="LevelBase" to="GameUI" method="_on_human_released"]
-[connection signal="levelLoaded" from="LevelBase" to="." method="_on_level_base_level_loaded"]
+[node name="EndGame" parent="EndCanvas" instance=ExtResource("9_6pirx")]
+
+[connection signal="next" from="GameUI" to="." method="_on_game_ui_won"]
+[connection signal="retry" from="GameUI" to="." method="_on_game_ui_time_up"]
+[connection signal="timeUp" from="GameUI" to="." method="_on_game_ui_time_up"]
+[connection signal="won" from="GameUI" to="." method="_on_game_ui_won"]
